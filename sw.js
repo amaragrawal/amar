@@ -24,7 +24,18 @@
 console.log('Started', self);
 
 self.addEventListener('install', function(event) {
-  self.skipWaiting();
+//  self.skipWaiting();
+  var CACHE_NAME = 'push-notif-cache-v1';
+  var urls_to_cache = {
+	'/amar/static/images/yes.png'
+  };
+  event.waitUntil(
+	caches.open(CACHE_NAME)
+	.then(function(cache) {
+		console.log("cache opened");
+		cache.addAll(urls_to_cache);
+	})
+  );
   console.log('Installed', event);
 });
 
