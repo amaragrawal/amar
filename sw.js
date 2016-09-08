@@ -59,7 +59,8 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('push', function(event) {
   console.log('Push message received', event);
-  
+  console.log('Event data', event.data);
+/*  
   var ntitle = event.notification.title;
   var nbody = event.notification.body;
   var nicon = event.notification.icon;
@@ -71,4 +72,5 @@ self.addEventListener('push', function(event) {
       icon: nicon,
       tag: ntag
   }));
+*/
 });

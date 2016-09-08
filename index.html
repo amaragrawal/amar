@@ -94,6 +94,19 @@ function initializeState () {
 
 function sendSubscriptionToServer(subscription) {
 	console.log(JSON.stringify(subscription));
+  var rawKey = subscription.getKey ? subscription.getKey('p256dh') : '';
+  var key = rawKey ?
+        btoa(String.fromCharCode.apply(null, new Uint8Array(rawKey))) :
+        '';
+  var rawAuthSecret = subscription.getKey ? subscription.getKey('auth') : '';
+  var authSecret = rawAuthSecret ?
+               btoa(String.fromCharCode.apply(null, new Uint8Array(rawAuthSecret))) :
+               '';
+
+  var endpoint = subscription.endpoint;
+  console.log('key: ', key);
+  console.log('auth: ', authSecret);
+  console.log('endpoint: ', endpoint);
 }
 </script>
 </head>
